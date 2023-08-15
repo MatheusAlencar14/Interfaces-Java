@@ -3,6 +3,7 @@ package application;
 import model.entities.Contrato;
 import model.entities.Parcelas;
 import model.services.ContratoService;
+import model.services.PayPalService;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -30,7 +31,7 @@ public class ProgramExercicio {
         System.out.print("Digite o número de parcelas: ");
         int numeroParcelas = sc.nextInt();
 
-        ContratoService contratoService = new ContratoService(null);
+        ContratoService contratoService = new ContratoService(new PayPalService());
 
         contratoService.processoContrato(contrato, numeroParcelas);
 
