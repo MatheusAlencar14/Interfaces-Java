@@ -1,6 +1,7 @@
 package application;
 
 import model.services.BrazilInterestService;
+import model.services.InterestService;
 import model.services.UsaInterestService;
 
 import java.util.Locale;
@@ -19,7 +20,7 @@ public class ProgramDefault {
         System.out.print("Meses: ");
         int meses = sc.nextInt();
 
-        UsaInterestService bis = new UsaInterestService(1.0);
+        InterestService bis = new BrazilInterestService(2.0);
         double pagamento = bis.pagamento(valor, meses);
 
         System.out.println("Pagamento após " + meses + " meses.");

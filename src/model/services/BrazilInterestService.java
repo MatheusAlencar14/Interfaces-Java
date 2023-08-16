@@ -2,22 +2,16 @@ package model.services;
 
 import java.security.InvalidParameterException;
 
-public class BrazilInterestService {
+public class BrazilInterestService implements InterestService{
 
-    private double interesRate;
+    private double interestRate;
 
     public BrazilInterestService(double interesRate) {
-        this.interesRate = interesRate;
+        this.interestRate = interesRate;
     }
 
-    public double getInteresRate() {
-        return interesRate;
+    @Override
+    public double getInterestRate() {
+        return interestRate;
     }
-
-    public double pagamento(double valor, int meses) {
-        if (meses < 1) {
-            throw new InvalidParameterException("Quantidade de meses deve ser maior do que zero.");
-            }
-        return valor * Math.pow(1.0 + interesRate / 100, meses);
-        }
-    }
+}
