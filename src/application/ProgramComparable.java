@@ -1,6 +1,7 @@
 package application;
 
 import model.entities.Color;
+import model.entities.Funcionario;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -13,19 +14,20 @@ public class ProgramComparable {
 
     public static void main(String[] args) {
 
-        List<String> list = new ArrayList<>();
+        List<Funcionario> list = new ArrayList<>();
         String path = "C:\\temp\\in.txt";
 
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
 
-            String name = br.readLine();
-            while (name != null) {
-                list.add(name);
-                name = br.readLine();
+            String funcionarioCsv = br.readLine();
+            while (funcionarioCsv != null) {
+                String[] vet = funcionarioCsv.split(",");
+                list.add(new Funcionario(vet[0], Double.parseDouble(vet[1])));
+                funcionarioCsv = br.readLine();
             }
             Collections.sort(list);
-            for (String s : list) {
-                System.out.println(s);
+            for (Funcionario s : list) {
+                System.out.println(s.getNome() + ", " + s.getSalario());
             }
         } catch (IOException e) {
             System.out.println("Erro: " + e.getMessage());
